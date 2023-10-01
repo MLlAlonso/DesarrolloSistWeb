@@ -1,0 +1,131 @@
+body,html {
+    margin: 0px 0px 0px 0px;
+    background-color: #F2F2F2;
+}
+
+header h1 {
+    font-size: 36px;
+    text-align: center;
+    padding: 150px;
+    background-image: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url(images/fondo.jpg);
+    color: white;
+    font-family: "Roboto Slab", serif;
+    margin-top: 0%;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.perfil-foto {
+    background-image: url("images/pf.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    border: 1px solid white;
+}
+
+.perfil-texto {
+    text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    color: rgba(51, 51, 51);
+    padding-bottom: 10px;
+    border-bottom: 2px solid gray;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.contenedor-numero {
+    position: absolute;
+    right: 100%;
+}
+
+.paragraph-break {
+    height: 20px;
+}
+
+.images_l {
+    height: 500px;
+    width: 65vw;
+    margin: 1% 0 1% 1%;
+
+}
+
+.numero {
+    position: absolute;
+    right: 40px;
+    font-family: "Roboto Slab", serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: gray;
+}
+
+.lenguaje {
+    padding: 60px 0px 0px 20px;
+}
+
+.cuerpo {
+    width: 66.67%;
+    position: relative;
+}
+
+.cuerpo p {
+    margin-bottom: 20px;
+}
+
+.item-text {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    line-height: 32px;
+    color: rgb(51, 51, 51);
+    margin: 10px;
+    text-align: justify;
+
+}
+
+.item {
+    padding: 60px 0px;
+}
+
+a {
+    color: #42b4d6;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+}
+
+a:hover {
+    filter: grayscale(50%);
+}
+
+.header-lenguaje {
+
+    font-family: "Roboto Slab", serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+}
+
+.recomendation{
+    display: flex;
+    flex-direction: row;
+}
+
+#recomendacion{
+    font-weight: bold;
+    margin-right: 2%;
+}
