@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 30)->nullable(false);
-            $table->string('especificacionesMaterial', 80)->nullable(true);
-            $table->string('especificacionesConexiones', 80)->nullable(true);
-            $table->string('especificacionesRangos', 80)->nullable(true);
-            $table->string('especificacionesTemperatura', 80)->nullable(true);
-            $table->string('especificacionesPeso', 80)->nullable(true);
-            $table->string('normasAplicables', 120)->nullable(true);
-            $table->string('modelo', 60)->nullable(false);
-            $table->string('categoria', 40)->nullable(false);
+            $table->string('nombre', 300)->nullable(false);
+            $table->string('material', 200)->nullable(true);
+            $table->string('conexiones', 200)->nullable(true);
+            $table->string('rangos', 200)->nullable(true);
+            $table->string('temperatura', 200)->nullable(true);
+            $table->string('peso', 100)->nullable(true);
+            $table->string('normasAplicables', 350)->nullable(true);
+            $table->string('modelo', 100)->nullable(false);
+            $table->string('categoria', 80)->nullable(false);
             $table->text('imagen')->nullable(false);
-            $table->string('caracteristicas', 120)->nullable(false);
-            $table->integer('cantidad')->nullable(false);
+            $table->string('caracteristicas', 500)->nullable(false);
+            $table->string('descripcion', 500)->nullable(false);
             $table->enum('marca', ['SETER','WIKA','PARKER','FLUKE','DEWIT','FINETEK']) -> nullable(false) -> default('SETER');
 
             $table->timestamps();

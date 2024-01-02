@@ -1,82 +1,52 @@
 @include('plantillas.navBar')
 
-<link rel="stylesheet" href="{{ asset('css/products.css') }}">
+<link rel="stylesheet" href="{{ asset('css/productCards.css') }}">
 
+<!-- Add Product Button-->
+    <div class="addButton">
+        <button class="animated-button">
+            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+            <span class="text"> <a href="{{route('addProduct')}}">Añadir producto</a></span>
+            <span class="circle"></span>
+            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+        </button>   
+    </div>
+    
     <main>
-        <!-- sección de todos los productos (haz una plantilla) -->
+        <!-- sección de todos los productos-->
         <section class="wrapper">
-            <div class="product">
-                <a href="products/1.html">
-                    <img src="img/productos/1.jpg" alt="">
-                    <h3>Producto 1</h3>
-                </a>
-            </div>
+            @foreach ($productos as $producto)
+                <!-- Plantilla para producto -->
+                <div class="card">
+                    <!-- Imagen del producto -->
+                    <img src="{{ asset('storage/' . $producto->imagen) }}" alt="Imagen del producto">
 
-            <div class="product">
-                <a href="products/2.html">
-                    <img src="img/productos/2.jpg" alt="">
-                    <h3>Producto 2</h3>
-                </a>
-            </div>
 
-            <div class="product">
-                <a href="products/3.html">
-                    <img src="img/productos/3.jpg" alt="">
-                    <h3>Producto 3</h3>
-                </a>
-            </div>
+    
+                    <div class="card-content">
 
-            <div class="product">
-                <a href="products/4.html">
-                    <img src="img/productos/4.jpg" alt="">
-                    <h3>Producto 4</h3>
-                </a>
-            </div>
-
-            <div class="product">
-                <a href="products/5.html">
-                    <img src="img/productos/5.jpg" alt="">
-                    <h3>Producto 5</h3>
-                </a>
-            </div>
-
-            <div class="product">
-                <a href="products/6.html">
-                    <img src="img/productos/6.jpg" alt="">
-                    <h3>Producto 6</h3>
-                </a>
-            </div>
-
-            <div class="product">
-                <a href="products/7.html">
-                    <img src="img/productos/7.jpg" alt="">
-                    <h3>Producto 7</h3>
-                </a>
-            </div>
-
-            <div class="product">
-                <a href="products/8.html">
-                    <img src="img/productos/8.jpg" alt="">
-                    <h3>Producto 8</h3>
-                </a>
-            </div>
-
-            <div class="product">
-                <a href="products/9.html">
-                    <img src="img/productos/9.jpg" alt="">
-                    <h3>Producto 9</h3>
-                </a>
-            </div>
-
-            <div class="product">
-                <a href="products/10.html">
-                    <img src="img/productos/10.jpg" alt="">
-                    <h3>Producto 9</h3>
-                </a>
-            </div>
-            
+                        <h2>{{ $producto->nombre }}</h2>
+                        <p>{{ $producto->descripcion }}</p>
+                        <a href="{{ route('productDetail', ['id' => $producto->id]) }}" class="button">Ver más</a>
+                    </div>
+                </div>
+            @endforeach
         </section>
+
     </main>
+
+    
+<!--    <div class="pagination justify-content-center">
+        {{ $productos->links() }}
+    </div> 
+-->
+
+
+    
 
     @include('plantillas.footer')
     <script src="js/index.js"></script>

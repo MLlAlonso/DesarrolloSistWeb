@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
-
-
 use App\Models\usuario;
 use Illuminate\Http\Request;
 
@@ -40,51 +38,22 @@ class UsuarioController extends Controller
             'pwd' => 'required|string|max:25|min:8|regex:/(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/'
         ]);
 
+        // Obtener el código de empleado en minúsculas
+        $codigoEmpleado = strtolower($request->input('empleado'));
+
         // Verificar el código de empleado y asignar el tipo de usuario correspondiente
-        $tipoUsuario = $request->input('empleado') === 'seter576' ? 'Empleado' : 'Cliente';
+        $tipoUsuario = $codigoEmpleado === 'seter576' ? 'Empleado' : 'Cliente';
 
         // Crear un nuevo usuario en la base de datos
         $usuario = new Usuario();
         $usuario->nombre = $request->input('nombre');
-        $usuario->apellidoPaterno = $request->input('apellidopaterno'); 
+        $usuario->apellidoPaterno = $request->input('apellidopaterno');
         $usuario->apellidoMaterno = $request->input('apellidomaterno');
         $usuario->email = $request->input('email');
         $usuario->password = Hash::make($request->input('pwd')); // Utilizar Hash para cifrar la contraseña
+        $usuario->tipo = $tipoUsuario;
         $usuario->save();
 
-        // Redirigir o realizar otras acciones según tus necesidades
-        return redirect()->route('index')->with('success', '¡Usuario registrado con éxito!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(usuario $usuario)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(usuario $usuario)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, usuario $usuario)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(usuario $usuario)
-    {
-        //
+        return redirect()->route('login')->with('success', '¡Usuario registrado con éxito!');
     }
 }

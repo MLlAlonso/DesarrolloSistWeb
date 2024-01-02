@@ -1,7 +1,8 @@
 <footer>
     <div class="footerSection">
         <section class="seter">
-            <a href="{{route('index')}}"> <img src="img/LogoSeterBlanco.png" alt="Logo SETER" width="100" height="70"> </a>
+            <a href="{{route('index')}}">     
+                <img src="{{ asset('img/LogoSeterBlanco.png') }}" alt="Logo SETER" width="100" height="70"> </a>
             
             <section>
                 <h3>Industrial Seter S.A de C.V.</h3>

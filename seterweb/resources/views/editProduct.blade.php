@@ -2,14 +2,12 @@
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 
 <main>
+    
     <div class="productForm">
-        <div class="heading">Registrar producto</div>
-        <form action="{{ isset($producto) ? route('updateProduct', ['id' => $producto->id]) : route('addProduct') }}" class="form" method="POST" enctype="multipart/form-data">
+        <div class="heading">Editar producto</div>
+        <form action="{{ route('products.update', ['product' => $producto->id]) }}" class="form" method="POST" enctype="multipart/form-data">
             @csrf
-
-            @if(isset($producto))
-                @method('PUT')
-            @endif
+            @method('PUT') <!-- Utiliza el método PUT para las actualizaciones -->
 
             <div class="datos">
                 <div class="etiquetas">
@@ -18,11 +16,11 @@
                 </div>
 
                 <div class="entrada">
-                    <input class="input" type="text" name="name" id="name" required maxlength="300" minlength="3" value="{{ isset($producto) ? $producto->nombre : old('name') }}">
+                    <input class="input" type="text" name="name" id="name" required maxlength="300" minlength="3" value="{{ old('name', $producto->nombre) }}">
                     @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input class="input" type="text" name="modelo" id="modelo" required maxlength="100" value="{{ isset($producto) ? $producto->modelo : old('modelo') }}">
+                    <input class="input" type="text" name="modelo" id="modelo" required maxlength="100" value="{{ old('modelo', $producto->modelo) }}">
                     @error('modelo')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -36,14 +34,14 @@
                 </div>
             
                 <div class="entrada">
-                    <input class="input" type="text" name="categoria" id="categoria" required maxlength="80" value="{{ isset($producto) ? $producto->categoria : old('categoria') }}">
+                    <input class="input" type="text" name="categoria" id="categoria" required maxlength="80" value="{{ old('categoria', $producto->categoria) }}">
                     @error('categoria')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
             
                     <select class="input-brand" name="marca" id="marca" required>
                         <!-- ... (opciones anteriores) ... -->
-                        <option value="SETER" {{ isset($producto) && $producto->marca == 'SETER' ? 'selected' : '' }}> SETER </option>
+                        <option value="SETER" {{ old('marca', $producto->marca) == 'SETER' ? 'selected' : '' }}> SETER </option>
                         <!-- ... (repetir para otras marcas) ... -->
                     </select>
                     @error('marca')
@@ -53,49 +51,50 @@
             </div>
             
             <label for="descripcion"> Descripción </label>
-            <input class="input" type="text" name="descripcion" id="descripcion" required maxlength="500" minlength="10" value="{{ isset($producto) ? $producto->descripcion : old('descripcion') }}">
+            <input class="input" type="text" name="descripcion" id="descripcion" required maxlength="500" minlength="10" value="{{ old('descripcion', $producto->descripcion) }}">
             @error('descripcion')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
+
             <label for="caracteristicas"> Características </label>
-            <input class="input" type="text" name="caracteristicas" id="caracteristicas" required maxlength="500" minlength="10" value="{{ isset($producto) ? $producto->caracteristicas : old('caracteristicas') }}">
+            <input class="input" type="text" name="caracteristicas" id="caracteristicas" required maxlength="500" minlength="10" value="{{ old('caracteristicas', $producto->caracteristicas) }}">
             @error('caracteristicas')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             
             <label for="material"> Especificaciones de material </label>
-            <input class="input" type="text" name="material" id="material" maxlength="200" value="{{ isset($producto) ? $producto->material : old('material') }}">
+            <input class="input" type="text" name="material" id="material" maxlength="200" value="{{ old('material', $producto->material) }}">
             @error('material')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             
             <label for="conexiones"> Especificaciones de conexiones </label>
-            <input class="input" type="text" name="conexiones" id="conexiones" maxlength="200" value="{{ isset($producto) ? $producto->conexiones : old('conexiones') }}">
+            <input class="input" type="text" name="conexiones" id="conexiones" maxlength="200" value="{{ old('conexiones', $producto->conexiones) }}">
             @error('conexiones')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             
             <label for="rangos"> Especificaciones de rangos </label>
-            <input class="input" type="text" name="rangos" id="rangos" maxlength="200" value="{{ isset($producto) ? $producto->rangos : old('rangos') }}">
+            <input class="input" type="text" name="rangos" id="rangos" maxlength="200" value="{{ old('rangos', $producto->rangos) }}">
             @error('rangos')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             
             <label for="temperatura"> Especificaciones de temperatura </label>
-            <input class="input" type="text" name="temperatura" id="temperatura" maxlength="200" value="{{ isset($producto) ? $producto->temperatura : old('temperatura') }}">
+            <input class="input" type="text" name="temperatura" id="temperatura" maxlength="200" value="{{ old('temperatura', $producto->temperatura) }}">
             @error('temperatura')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             
             <label for="peso"> Especificaciones de peso </label>
-            <input class="input" type="text" name="peso" id="peso" maxlength="100" value="{{ isset($producto) ? $producto->peso : old('peso') }}">
+            <input class="input" type="text" name="peso" id="peso" maxlength="100" value="{{ old('peso', $producto->peso) }}">
             @error('peso')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             
             <label for="normas"> Normas aplicables </label>
-            <input class="input" type="text" name="normas" id="normas" maxlength="350" value="{{ isset($producto) ? $producto->normasAplicables : old('normas') }}">
+            <input class="input" type="text" name="normas" id="normas" maxlength="350" value="{{ old('normas', $producto->normasAplicables) }}">
             @error('normas')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -111,11 +110,17 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
-            <input class="add-button" type="submit" value="{{ isset($producto) ? 'Actualizar producto' : 'Registrar producto' }}">
+                <input class="add-button" type="submit" value="Actualizar producto">
 
-            <!-- Previsualizar la imagen, implementar en el otro input file -->
-            <script src="{{ asset('js/image.js') }}"></script>
+                <!-- Previsualizar la imagen, implementar en el otro input file -->
+                <script src="{{ asset('js/image.js') }}"></script>
         </form>
+
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 </main>
 
     @include('plantillas.footer')

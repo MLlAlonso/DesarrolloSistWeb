@@ -4,9 +4,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Krub&display=swap" rel="stylesheet">
-    <link rel="icon" href="img/logoSeter-icon.png">
-    <title>Seter @yield('title')</title>
-    <link rel="stylesheet" href="css/style-index.css">  
+
+    <link rel="icon" href="{{asset('img/logoSeter-icon.png')}}">
+    <title>Seter</title>
+    <link rel="stylesheet" href="{{ asset('css/style-index.css') }}">   
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <script src="https://kit.fontawesome.com/8e785e1f4e.js" crossorigin="anonymous"></script>
 </head>
@@ -24,8 +25,8 @@
     
             <div class="logo-header">
                 
-                <a href="{{route('index')}}">
-                    <img src="img/LogoSeterBlanco.png" alt="imagen">                
+                <a href="{{route('index')}}">  
+                    <img src="{{ asset('img/LogoSeterBlanco.png') }}" alt="Logo de SETER">              
                 </a>
                 
             </div>
@@ -41,7 +42,7 @@
                     </svg>
                 </a>
                 
-                <a class="account" href="#">
+                <a class="account" href="{{route('login')}}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-user" width="40" height="40" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />

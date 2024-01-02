@@ -30,6 +30,10 @@ main{
     margin-top: 2rem;
   }
 
+  #name, #categoria {
+    margin-right: 3rem;
+  }
+
   .datos{
     display: flex;
     flex-direction:column;
@@ -180,3 +184,16 @@ main{
   #inputImagen{
     font-size: 1.5rem;
   }
+
+  .alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}

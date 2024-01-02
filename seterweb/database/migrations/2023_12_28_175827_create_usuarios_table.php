@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('apellidoPaterno', 30)->nullable(false);
             $table->string('apellidoMaterno', 30)->nullable(false);
             $table->string('email', 50)->nullable(false);
-            $table->string('password', 25)->nullable(false);
+            $table->string('password', 260)->nullable(false);
             $table->enum('tipo', ['Empleado','Cliente']) -> nullable(false) -> default('Cliente');
             $table->timestamps();
         });

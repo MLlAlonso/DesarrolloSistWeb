@@ -4,7 +4,7 @@
 <main>
     <div class="productForm">
         <div class="heading">Registrarse</div>
-        <form action="{{ route('signupPost') }}" class="form" method="POST">
+        <form action="{{ route('signUp') }}" class="form" method="POST">
             @csrf
 
             <label for="nombre"> Nombre </label>
@@ -38,7 +38,7 @@
             @enderror
 
             <label for="empleado"> Codigo empleado (opcional) </label>
-            <input class="input" type="text" name="empleado" id="empleado" required maxlength="10">
+            <input class="input" type="text" name="empleado" id="empleado" maxlength="10">
             @error('empleado')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
